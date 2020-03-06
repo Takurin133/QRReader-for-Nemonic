@@ -28,8 +28,10 @@ import {
 export class HomePage {
   isOpen = false;
   scannedData: {};
+  text: string;
   privateKey: string;
   publicKey: string;
+  
   constructor(private qrScanner: QRScanner,private router: Router,) {}
 
   ionViewWillEnter() {
@@ -157,3 +159,4 @@ export class HomePage {
   }
 
 }
+// export const qrJson = JSON.parse(text);

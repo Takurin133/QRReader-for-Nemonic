@@ -9,6 +9,11 @@ export class DisplayPage implements OnInit {
 
   constructor() { }
 
+  ionViewDidEnter() {
+  //  const qr = JSON.parse(QRcodee);
+
+  }
+
   ngOnInit() {
   }
 
