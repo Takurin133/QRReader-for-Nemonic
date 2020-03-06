@@ -25,6 +25,9 @@ import {
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
+export let qrJson;
+
 export class HomePage {
   isOpen = false;
   scannedData: {};
@@ -53,7 +56,7 @@ export class HomePage {
           const scanSub = this.qrScanner.scan().subscribe((text: string) => {
             console.log('Scanned something', text);
             if (text !== '') {
-              const qrJson = JSON.parse(text);
+              qrJson = JSON.parse(text);
               console.log(text);
               console.log(qrJson.data.msg);
               this.sendMultisig(qrJson);
@@ -154,9 +157,6 @@ export class HomePage {
         listener.close();
       });
     });
-
-
   }
-
 }
-// export const qrJson = JSON.parse(text);
+// export let qrJson;

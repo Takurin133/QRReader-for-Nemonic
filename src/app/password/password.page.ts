@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import {qrJson} from '../home/home.page'
+import {qrJson} from '../home/home.page';
 @Component({
   selector: 'app-password',
   templateUrl: './password.page.html',
@@ -16,8 +16,8 @@ export class PasswordPage implements OnInit {
   onLogin(loginForm){
     // homepage.tsからqrJsonを取得したい。
     // qrからパスワードだけ抜けとれる？↓
-    if (this.password === qrJson.data.password){
-      this.router.navigateByUrl('/display')
+    if (this.password === qrJson.data.password) {
+      this.router.navigateByUrl('/display');
     }
   }
 
