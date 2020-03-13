@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { Router } from '@angular/router';
+import { AppService } from '../app.service';
 import {
   Account,
   Address,
@@ -26,7 +27,7 @@ import {
   styleUrls: ['home.page.scss'],
 })
 
-export let qrJson;
+
 
 export class HomePage {
   isOpen = false;
@@ -34,8 +35,7 @@ export class HomePage {
   text: string;
   privateKey: string;
   publicKey: string;
-  
-  constructor(private qrScanner: QRScanner,private router: Router,) {}
+  constructor(private qrScanner: QRScanner, private router: Router, private appservice: AppService) {}
 
   ionViewWillEnter() {
     if ('privateKey' in localStorage) {
@@ -45,7 +45,6 @@ export class HomePage {
       this.publicKey = JSON.parse(localStorage.publicKey);
     }
    }
-   
   startScanner() {
     this.qrScanner.prepare()
       .then((status: QRScannerStatus) => {
@@ -56,7 +55,7 @@ export class HomePage {
           const scanSub = this.qrScanner.scan().subscribe((text: string) => {
             console.log('Scanned something', text);
             if (text !== '') {
-              qrJson = JSON.parse(text);
+              const qrJson = this.appservice.qrJson;
               console.log(text);
               console.log(qrJson.data.msg);
               this.sendMultisig(qrJson);
@@ -81,6 +80,7 @@ export class HomePage {
         }
       })
       .catch((e: any) => console.log('Error is', e));
+      this.router.navigateByUrl('/password');
   }
   async sendMultisig(qrContent: any) {
     console.log(this.privateKey);
