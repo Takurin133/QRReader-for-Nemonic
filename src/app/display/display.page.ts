@@ -14,6 +14,7 @@ export class DisplayPage implements OnInit {
   ionViewDidEnter() {
    this.Address = this.appservice.qrJson.data.address;
    this.Balance = this.appservice.qrJson.data.Balance;
+   //↑ここqrJsonの中身わかんないとわっかんねぇ
   }
 
   ngOnInit() {
