@@ -13,7 +13,7 @@ export class DisplayPage implements OnInit {
 
   ionViewDidEnter() {
    this.Address = this.appservice.qrJson.data.address;
-   this.Balance = this.appservice.qrJson.data.Balance;
+   this.Balance = this.appservice.qrJson.data.Balance; // Accountのnem2-sdkでaddressでブロックチェーンと通信してよび出す（アカウントレポジトリからgetAccountInfoメソッドから）
    //↑ここqrJsonの中身わかんないとわっかんねぇ
   }
 
