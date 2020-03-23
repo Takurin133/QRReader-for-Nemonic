@@ -29,7 +29,7 @@ text: string;
   //   const scanSub = this.qrScanner.scan().subscribe((text: string) => {
   //     console.log('Scanned something', text);
   //     if (text !== '') {
-         qrJson = JSON.parse(this.text);
+         qrJson = JSON.parse('{}');
 //         console.log(text);
 //         console.log(qrJson.data.msg);
 //       }
